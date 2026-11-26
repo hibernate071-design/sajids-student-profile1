@@ -144,13 +144,56 @@
       box-shadow: 0 14px 34px rgba(255, 107, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.36);
     }
 
-    /* Uniform gallery aspect ratio */
+    /* Orientation-aware gallery media frame (supports both portrait and landscape photos seamlessly) */
     .gallery-media-frame {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 4 / 3;
       width: 100%;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(135deg, #141210 0%, #09090b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255, 107, 0, 0.16) 0%, rgba(18, 15, 13, 0.94) 68%, #070709 100%);
+    }
+
+    /* Ambient blurred backdrop layer for portrait/vertical shots */
+    .gallery-blur-backdrop {
+      position: absolute;
+      inset: -14px;
+      width: calc(100% + 28px);
+      height: calc(100% + 28px);
+      object-fit: cover;
+      filter: blur(18px) brightness(0.38) saturate(125%);
+      transform: scale(1.08);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .gallery-media-frame.is-portrait .gallery-blur-backdrop {
+      opacity: 1;
+    }
+
+    /* Primary foreground image inside gallery frame */
+    .gallery-main-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-media-frame.is-portrait .gallery-main-img {
+      object-fit: contain;
+      object-position: center center;
+      padding: 0.5rem;
+    }
+
+    .group:hover .gallery-main-img {
+      transform: scale(1.04);
     }
 
     /* Scroll reveal */
@@ -184,7 +227,8 @@
       .reveal-card,
       .liquid-glass,
       .liquid-glass-interactive:hover,
-      .btn-orange-gradient:hover {
+      .btn-orange-gradient:hover,
+      .gallery-main-img {
         opacity: 1;
         transform: none;
         transition: none;
@@ -842,6 +886,38 @@
                 <div class="font-semibold text-white">Volunteer Coordinator</div>
                 <div class="text-xs text-orange-300 mt-0.5">Project Chona-Piyaju &mdash; Youth&rsquo;s Voice</div>
               </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Event &amp; Outreach Volunteer</div>
+                <div class="text-xs text-amber-300 mt-0.5">Youth Marketing Club &amp; IIUC Campus Initiatives</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Community Logistics &amp; Crowd Coordination</div>
+                <div class="text-xs text-zinc-400 mt-0.5">Supporting social welfare drives and inter-university competitions</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 5: VISUAL PROOF & MOMENTS -->
+      <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+              05 / Visual Proof &amp; Moments
+            </span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+              Visual Proof, Milestones &amp; Media Showcase
+            </h2>
+            <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+              Verified event highlights, championship recognitions, executive meetings, and live LinkedIn video showcases—click any photo to inspect full resolution.
+            </p>
+          </div>
+          <span class="glass-pill self-start md:self-auto px-3.5 py-1.5 rounded-full text-xs font-medium text-orange-200">
+            Orientation-Adaptive Framing &bull; Click to Zoom
+          </span>
+        </div>
+
         <!-- Balanced 7-Item Responsive Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
 
@@ -856,11 +932,17 @@
             >
               <img
                 src="https://media.licdn.com/dms/image/v2/D4D22AQE-I_Y-33zl1A/feedshare-shrink_480/B4DaHa2DjdJ8AY-/0/1794672966104?e=1797465600&v=beta&t=fXBm1bKh81SJLL_JuWr290hAGT_u5kGOfBKcWUZhAIM"
-                alt="Associate, Branding & Promotion | EF Hult Prize at IIUC 2026–2027"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=EF+Hult+Prize+at+IIUC+2026-2027';"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                alt=""
+                aria-hidden="true"
+                class="gallery-blur-backdrop"
               />
-              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-200">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4D22AQE-I_Y-33zl1A/feedshare-shrink_480/B4DaHa2DjdJ8AY-/0/1794672966104?e=1797465600&v=beta&t=fXBm1bKh81SJLL_JuWr290hAGT_u5kGOfBKcWUZhAIM"
+                alt="Associate, Branding & Promotion | EF Hult Prize at IIUC 2026–2027"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/141210/ff9100?text=EF+Hult+Prize+at+IIUC+2026-2027';"
+                class="gallery-main-img orientation-aware-img"
+              />
+              <span class="absolute top-3 left-3 z-10 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-200">
                 Hult Prize 2026&ndash;2027
               </span>
             </button>
@@ -887,11 +969,17 @@
             >
               <img
                 src="https://media.licdn.com/dms/image/v2/D4E22AQF2cpiADO-f5A/feedshare-shrink_800/B4EaA6HH2SHkAc-/0/1787681341226?e=1797465600&v=beta&t=g8_CRehfI5dGSxWenRSl0BxnP5ES5OstIbhbAEuxe9E"
-                alt="Public Relations Secretary — Youth Marketing Club, IIUC"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=PR+Secretary+%7C+Youth+Marketing+Club';"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                alt=""
+                aria-hidden="true"
+                class="gallery-blur-backdrop"
               />
-              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E22AQF2cpiADO-f5A/feedshare-shrink_800/B4EaA6HH2SHkAc-/0/1787681341226?e=1797465600&v=beta&t=g8_CRehfI5dGSxWenRSl0BxnP5ES5OstIbhbAEuxe9E"
+                alt="Public Relations Secretary — Youth Marketing Club, IIUC"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/141210/ff9100?text=PR+Secretary+%7C+Youth+Marketing+Club';"
+                class="gallery-main-img orientation-aware-img"
+              />
+              <span class="absolute top-3 left-3 z-10 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
                 Leadership
               </span>
             </button>
@@ -907,7 +995,7 @@
             </div>
           </article>
 
-          <!-- Photo 2: IIUC Business Fair -->
+          <!-- Photo 3: IIUC Business Fair -->
           <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
             <button
               type="button"
@@ -918,11 +1006,17 @@
             >
               <img
                 src="https://media.licdn.com/dms/image/v2/D4E2DAQHO6Xm1_314mw/profile-treasury-image-shrink_800_800/B4EaA5xWQnIIAI-/0/1787675633240?e=1796302800&v=beta&t=kAVKutuoW_tFW3n4CkjO38fMdXQeqcikzzReCNf_GcE"
-                alt="IIUC Business Fair"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=IIUC+Business+Fair';"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                alt=""
+                aria-hidden="true"
+                class="gallery-blur-backdrop"
               />
-              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-200">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E2DAQHO6Xm1_314mw/profile-treasury-image-shrink_800_800/B4EaA5xWQnIIAI-/0/1787675633240?e=1796302800&v=beta&t=kAVKutuoW_tFW3n4CkjO38fMdXQeqcikzzReCNf_GcE"
+                alt="IIUC Business Fair"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/141210/ff9100?text=IIUC+Business+Fair';"
+                class="gallery-main-img orientation-aware-img"
+              />
+              <span class="absolute top-3 left-3 z-10 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-200">
                 Campus Activation
               </span>
             </button>
@@ -938,8 +1032,8 @@
             </div>
           </article>
 
-          <!-- Photo 3: Public Speaking Champion of IIUC -->
-          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+          <!-- Photo 4: Public Speaking Champion of IIUC -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-3">
             <button
               type="button"
               data-lightbox-src="https://media.licdn.com/dms/image/v2/D4E22AQFDBQoT-_5JbA/feedshare-shrink_800/B4EaBqzceyJ0Ac-/0/1788498266369?e=1797465600&v=beta&t=VpvorGuFe8N12RtPAHcBQ4dDxg_7Zk4EVXAwHh-Kkz4"
@@ -949,11 +1043,17 @@
             >
               <img
                 src="https://media.licdn.com/dms/image/v2/D4E22AQFDBQoT-_5JbA/feedshare-shrink_800/B4EaBqzceyJ0Ac-/0/1788498266369?e=1797465600&v=beta&t=VpvorGuFe8N12RtPAHcBQ4dDxg_7Zk4EVXAwHh-Kkz4"
-                alt="Public speaking champion of IIUC"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=Public+Speaking+Champion+IIUC';"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                alt=""
+                aria-hidden="true"
+                class="gallery-blur-backdrop"
               />
-              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E22AQFDBQoT-_5JbA/feedshare-shrink_800/B4EaBqzceyJ0Ac-/0/1788498266369?e=1797465600&v=beta&t=VpvorGuFe8N12RtPAHcBQ4dDxg_7Zk4EVXAwHh-Kkz4"
+                alt="Public speaking champion of IIUC"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/141210/ff9100?text=Public+Speaking+Champion+IIUC';"
+                class="gallery-main-img orientation-aware-img"
+              />
+              <span class="absolute top-3 left-3 z-10 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
                 2x Champion
               </span>
             </button>
@@ -969,8 +1069,8 @@
             </div>
           </article>
 
-          <!-- Photo 4: Meeting with the CEO and Founder of Next Wave -->
-          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+          <!-- Photo 5: Meeting with the CEO and Founder of Next Wave -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-3">
             <button
               type="button"
               data-lightbox-src="https://media.licdn.com/dms/image/v2/D5622AQHMibv_0xMoBg/feedshare-shrink_480/B56aCl4qkAHIAg-/0/1789489490650?e=1797465600&v=beta&t=7LXZe8ZAaE3r5OOHEH2OMogAWVrtbJwzgNgPyXGWTWg"
@@ -980,11 +1080,17 @@
             >
               <img
                 src="https://media.licdn.com/dms/image/v2/D5622AQHMibv_0xMoBg/feedshare-shrink_480/B56aCl4qkAHIAg-/0/1789489490650?e=1797465600&v=beta&t=7LXZe8ZAaE3r5OOHEH2OMogAWVrtbJwzgNgPyXGWTWg"
-                alt="Meeting with the CEO and Founder of Next Wave"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=Meeting+with+CEO+of+Next+Wave';"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                alt=""
+                aria-hidden="true"
+                class="gallery-blur-backdrop"
               />
-              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5622AQHMibv_0xMoBg/feedshare-shrink_480/B56aCl4qkAHIAg-/0/1789489490650?e=1797465600&v=beta&t=7LXZe8ZAaE3r5OOHEH2OMogAWVrtbJwzgNgPyXGWTWg"
+                alt="Meeting with the CEO and Founder of Next Wave"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/141210/ff9100?text=Meeting+with+CEO+of+Next+Wave';"
+                class="gallery-main-img orientation-aware-img"
+              />
+              <span class="absolute top-3 left-3 z-10 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
                 Industry Network
               </span>
             </button>
@@ -1042,7 +1148,7 @@
 
           <!-- Item 7: Live Embedded LinkedIn Video Showcase -->
           <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-3">
-            <div class="relative w-full aspect-[504/399] bg-black overflow-hidden border-b border-orange-500/20">
+            <div class="relative w-full aspect-[4/3] bg-black overflow-hidden border-b border-orange-500/20">
               <iframe
                 src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7503135000700227584?compact=1"
                 height="399"
@@ -1082,7 +1188,7 @@
         </div>
       </section>
 
-      <!-- SEGMENT 6: REFERENCES & ENDORSEMENTS (With Provided Photos) -->
+      <!-- SEGMENT 6: REFERENCES & ENDORSEMENTS -->
       <section id="references" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
         <div class="reveal-card mb-8 sm:mb-10">
           <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
@@ -1288,8 +1394,8 @@
           </svg>
         </button>
       </div>
-      <div class="bg-black flex items-center justify-center max-h-[70vh] overflow-hidden">
-        <img id="lightbox-img" src="" alt="" class="max-h-[70vh] w-auto object-contain" />
+      <div class="bg-black flex items-center justify-center max-h-[72vh] overflow-hidden p-2">
+        <img id="lightbox-img" src="" alt="" class="max-h-[70vh] w-auto object-contain rounded-xl" />
       </div>
       <div class="px-5 py-4 text-xs sm:text-sm text-zinc-300">
         <p id="lightbox-caption"></p>
@@ -1297,9 +1403,36 @@
     </div>
   </div>
 
-  <!-- Interactive JavaScript: Moving White Particles, Mobile Drawer, Lightbox & Scroll Reveals -->
+  <!-- Interactive JavaScript: Orientation Detection, Moving White Particles, Mobile Drawer, Lightbox & Scroll Reveals -->
   <script>
     (function () {
+      // 0. Automatic Image Orientation Detection for Visual Proof Gallery
+      // Detects natural dimensions on load: portrait/vertical photos get full uncropped display
+      // over an ambient blurred backdrop; landscape/square photos fill the frame with top-biased subject framing.
+      const galleryImages = document.querySelectorAll('.orientation-aware-img');
+
+      function applyOrientationClass(img) {
+        const frame = img.closest('.gallery-media-frame');
+        if (!frame) return;
+        if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+          if (img.naturalHeight > img.naturalWidth * 1.02) {
+            frame.classList.add('is-portrait');
+          } else {
+            frame.classList.remove('is-portrait');
+          }
+        }
+      }
+
+      galleryImages.forEach(function (img) {
+        if (img.complete) {
+          applyOrientationClass(img);
+        } else {
+          img.addEventListener('load', function () {
+            applyOrientationClass(img);
+          });
+        }
+      });
+
       // 1. Mobile Navigation Drawer
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileDrawer = document.getElementById('mobile-nav-drawer');
