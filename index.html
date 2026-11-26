@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sajid Mahmud | Marketing &amp; Project Coordination Portfolio</title>
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration calibrated to Orange & Black theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            voidBlack: '#060608',
+            charcoalDeep: '#111116',
+            emberOrange: '#FF6B00',
+            amberGlow: '#FF9100',
+            burntOrange: '#E65100',
+          },
+          boxShadow: {
+            glass: '0 22px 52px rgba(0, 0, 0, 0.72), inset 0 1px 0 0 rgba(255, 255, 255, 0.14)',
+            glowOrange: '0 10px 34px rgba(255, 107, 0, 0.34)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Liquid-Glass, Orange-Black Gradient & Particle Styling -->
+  <style>
+    :root {
+      --bg-black: #060608;
+      --bg-charcoal: #101015;
+      --accent-orange: #ff6b00;
+      --accent-amber: #ff9100;
+      --glass-border: rgba(255, 145, 0, 0.18);
+      --glass-highlight: rgba(255, 255, 255, 0.2);
+    }
+
+    body {
+      background-color: var(--bg-black);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(255, 107, 0, 0.22) 0%, transparent 42%),
+        radial-gradient(circle at 88% 18%, rgba(230, 81, 0, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 50% 82%, rgba(255, 145, 0, 0.14) 0%, transparent 48%),
+        linear-gradient(160deg, #050507 0%, #0d0d12 45%, #140c07 78%, #070709 100%);
+      color: #f8fafc;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Full-viewport moving white particles canvas */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .portfolio-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Liquid-glass card calibrated to Black & Ember Orange */
+    .liquid-glass {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(20, 18, 17, 0.64) 48%,
+        rgba(9, 9, 12, 0.78) 100%
+      );
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid var(--glass-border);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 0 var(--glass-highlight),
+        inset 0 -1px 0 0 rgba(255, 107, 0, 0.08);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.28s ease,
+                  box-shadow 0.28s ease,
+                  background 0.28s ease;
+    }
+
+    .liquid-glass-interactive:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 145, 0, 0.11) 0%,
+        rgba(28, 22, 18, 0.72) 50%,
+        rgba(11, 11, 14, 0.84) 100%
+      );
+      border-color: rgba(255, 145, 0, 0.44);
+      box-shadow:
+        0 26px 58px rgba(0, 0, 0, 0.75),
+        0 0 32px rgba(255, 107, 0, 0.18),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+    }
+
+    /* Liquid pill badge */
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 145, 0, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+
+    /* Orange-black metallic portrait ring */
+    .avatar-ring {
+      background: linear-gradient(135deg, #ff6b00 0%, #ff9100 45%, #27272a 75%, #ff6b00 100%);
+      padding: 3.5px;
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.75), 0 0 38px rgba(255, 107, 0, 0.32);
+    }
+
+    /* Primary orange gradient button */
+    .btn-orange-gradient {
+      background: linear-gradient(135deg, #ff6b00 0%, #e65100 100%);
+      box-shadow: 0 10px 28px rgba(255, 107, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn-orange-gradient:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(255, 107, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.36);
+    }
+
+    /* Uniform gallery aspect ratio */
+    .gallery-media-frame {
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #141210 0%, #09090b 100%);
+    }
+
+    /* Scroll reveal */
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060608;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 107, 0, 0.42);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 145, 0, 0.68);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-card,
+      .liquid-glass,
+      .liquid-glass-interactive:hover,
+      .btn-orange-gradient:hover {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-orange-500/30 selection:text-orange-200">
+  <!-- Moving White Particles Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <div class="portfolio-content min-h-screen flex flex-col">
+
+    <!-- Sticky Liquid-Glass Navigation Header -->
+    <header class="sticky top-0 z-40 border-b border-orange-500/15 bg-[#060608]/80 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-3">
+        <!-- Brand -->
+        <a href="#top" class="flex items-center gap-3 group min-w-0">
+          <span class="w-9 h-9 rounded-xl btn-orange-gradient flex items-center justify-center font-display font-extrabold text-sm text-white shrink-0">
+            SM
+          </span>
+          <div class="truncate">
+            <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white block leading-none">
+              Sajid Mahmud
+            </span>
+            <span class="text-[11px] text-orange-300/80 hidden sm:block mt-1">
+              Marketing &amp; Project Coordination
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Primary Sections" class="hidden xl:flex items-center gap-1 text-sm">
+          <a href="#skills" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">Skills</a>
+          <a href="#experience" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">Experience</a>
+          <a href="#education" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">Education</a>
+          <a href="#achievements" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">Achievements</a>
+          <a href="#gallery" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">Visual Proof</a>
+          <a href="#references" class="px-3 py-2 rounded-xl text-zinc-300 hover:text-orange-300 hover:bg-white/5 transition">References</a>
+        </nav>
+
+        <!-- LinkedIn Connect CTA & Mobile Toggle -->
+        <div class="flex items-center gap-2.5">
+          <a
+            href="https://www.linkedin.com/in/sajid-mahmud-72a132431/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-orange-gradient inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white"
+          >
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
+            </svg>
+            <span>Connect on LinkedIn</span>
+          </a>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav-drawer"
+            aria-label="Toggle navigation menu"
+            class="xl:hidden p-2.5 rounded-xl glass-pill text-zinc-200 hover:text-orange-300 transition"
+          >
+            <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-orange-500/15 bg-[#08080b]/95 backdrop-blur-2xl">
+        <nav aria-label="Mobile Sections" class="max-w-7xl mx-auto px-4 py-4 grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
+          <a href="#skills" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">01. Core Skills &amp; Capabilities</a>
+          <a href="#experience" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">02. Professional Experience</a>
+          <a href="#education" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">03. Education &amp; Certifications</a>
+          <a href="#achievements" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">04. Honors, Leadership &amp; Volunteering</a>
+          <a href="#gallery" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">05. Visual Proof &amp; Moments</a>
+          <a href="#references" class="mobile-nav-link px-4 py-3 rounded-xl text-zinc-200 hover:bg-orange-500/10 hover:text-orange-300 transition">06. Academic &amp; Industry References</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Portfolio Content -->
+    <main id="top" class="flex-1">
+
+      <!-- HERO SECTION -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-14 sm:pb-20">
+        <div class="liquid-glass rounded-3xl p-6 sm:p-10 lg:p-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+
+            <!-- Left Column: Portrait & Quick Stats -->
+            <div class="lg:col-span-4 flex flex-col items-center text-center">
+              <div class="avatar-ring rounded-full mb-5">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D5603AQEd172b0vmHEQ/profile-displayphoto-crop_800_800/B56ZnDycEkKAAI-/0/1759926404110?e=1796860800&v=beta&t=_NdtQVLZ2qL8dQ7-wXxCRuBG9xvsPbv0YegBS3iYuNM"
+                  alt="Sajid Mahmud — Marketing & Project Coordination Professional"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x400/141210/ff9100?text=SM';"
+                  class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover object-top bg-zinc-900"
+                />
+              </div>
+
+              <span class="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-orange-200 mb-3">
+                <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                Verified LinkedIn Student &amp; Agency Portfolio
+              </span>
+
+              <h2 class="font-display font-bold text-xl text-white">Sajid Mahmud</h2>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+                Chattogram, Bangladesh
+              </p>
+
+              <!-- Direct Contact Pills -->
+              <div class="mt-3 flex flex-col items-center gap-1.5 text-xs text-zinc-300">
+                <a href="mailto:sajidmahmud2307@gmail.com" class="hover:text-orange-300 transition">
+                  sajidmahmud2307@gmail.com
+                </a>
+                <a href="tel:+8801879757459" class="hover:text-orange-300 transition">
+                  +8801879757459
+                </a>
+              </div>
+
+              <!-- Key Academic & Competition Stats -->
+              <div class="grid grid-cols-3 gap-2.5 w-full max-w-xs mt-6">
+                <div class="rounded-2xl bg-black/40 border border-orange-500/20 p-3">
+                  <div class="font-display font-extrabold text-base sm:text-lg text-orange-400">3.31</div>
+                  <div class="text-[11px] text-zinc-400 mt-0.5">BBA CGPA</div>
+                </div>
+                <div class="rounded-2xl bg-black/40 border border-orange-500/20 p-3">
+                  <div class="font-display font-extrabold text-base sm:text-lg text-white">2x</div>
+                  <div class="text-[11px] text-zinc-400 mt-0.5">Speak Champ</div>
+                </div>
+                <div class="rounded-2xl bg-black/40 border border-orange-500/20 p-3">
+                  <div class="font-display font-extrabold text-base sm:text-lg text-amber-400">4.92</div>
+                  <div class="text-[11px] text-zinc-400 mt-0.5">HSC GPA</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Headline, Summary & LinkedIn Action -->
+            <div class="lg:col-span-8">
+              <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-orange-200">
+                  BBA in Marketing &bull; IIUC
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-zinc-200">
+                  PR Secretary &bull; Youth Marketing Club, IIUC
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-amber-200">
+                  HubSpot &amp; OMCP Certified
+                </span>
+              </div>
+
+              <h1 class="font-display font-extrabold text-2xl sm:text-4xl lg:text-[2.6rem] leading-[1.15] tracking-tight text-white">
+                Marketing &amp; Project Coordination Professional
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 mt-1">
+                  Turning Strategy Into Measured Creative Execution.
+                </span>
+              </h1>
+
+              <p class="mt-5 text-sm sm:text-base text-zinc-300 leading-relaxed max-w-3xl">
+                Marketing undergraduate (BBA, IIUC) with over two years of hands-on experience in project management, digital marketing, and public relations. Directed creative campaigns as a remote director and creative editor for <strong class="text-white font-semibold">USANA Health Sciences India</strong>, managed client projects as Project Manager at <strong class="text-white font-semibold">Sytrus Media</strong>, and led PR, online promotion, and sponsorship for <strong class="text-white font-semibold">Idea Thrive Bangladesh 2026</strong>. HubSpot and OMCP certified, with strong communication and leadership skills proven as a two-time inter-university public speaking champion.
+              </p>
+
+              <!-- Coherence Strip for Recruiters -->
+              <div class="mt-6 rounded-2xl bg-gradient-to-r from-orange-500/12 via-amber-500/8 to-transparent border border-orange-500/25 p-4 sm:p-5">
+                <div class="text-xs font-semibold uppercase tracking-wider text-orange-300 mb-1.5">
+                  Authentic Evidence &amp; Recruiter Overview
+                </div>
+                <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                  Every milestone in this portfolio connects directly to verifiable CV records: cross-border remote creative direction (India &amp; Bangladesh), client-facing agency project delivery, flagship campus PR &amp; sponsorship execution, recognized certifications, and endorsed references from university faculty and industry leadership.
+                </p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="mt-7 flex flex-wrap items-center gap-3">
+                <a
+                  href="https://www.linkedin.com/in/sajid-mahmud-72a132431/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-orange-gradient inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-bold text-white"
+                >
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
+                  </svg>
+                  <span>Connect on LinkedIn</span>
+                </a>
+
+                <a
+                  href="#experience"
+                  class="inline-flex items-center justify-center px-5 py-3.5 rounded-xl text-sm font-semibold glass-pill text-zinc-100 hover:bg-orange-500/15 hover:text-orange-200 transition"
+                >
+                  View Experience
+                </a>
+
+                <a
+                  href="#gallery"
+                  class="inline-flex items-center justify-center px-5 py-3.5 rounded-xl text-sm font-semibold glass-pill text-zinc-100 hover:bg-orange-500/15 hover:text-orange-200 transition"
+                >
+                  Visual Proof Gallery
+                </a>
+
+                <a
+                  href="#references"
+                  class="inline-flex items-center justify-center px-5 py-3.5 rounded-xl text-sm font-semibold glass-pill text-zinc-100 hover:bg-orange-500/15 hover:text-orange-200 transition"
+                >
+                  References
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGMENT 1: CORE SKILLS & CAPABILITIES -->
+      <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            01 / Core Skills &amp; Capabilities
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Multidisciplinary Marketing, Production &amp; Leadership Stack
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+            Structured across four operational pillars demonstrated in agency delivery, remote brand direction, and flagship student initiatives.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <!-- Category 1: Marketing & Communication -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400 font-display font-bold text-sm">
+                  01
+                </span>
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                  Marketing &amp; Communication
+                </h3>
+              </div>
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-orange-300 bg-orange-500/10 border border-orange-500/20 px-2.5 py-1 rounded-full">
+                Growth &amp; PR
+              </span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed mb-5">
+              Planning audience-centered campaigns, managing public relations, and aligning visual storytelling with brand positioning.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Digital Marketing Strategy</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Online Promotion</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Public Relations</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Marketing Support</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Creative Direction</span>
+            </div>
+          </article>
+
+          <!-- Category 2: Project & Event Management -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-300 font-display font-bold text-sm">
+                  02
+                </span>
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                  Project &amp; Event Management
+                </h3>
+              </div>
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full">
+                Execution
+              </span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed mb-5">
+              End-to-end delivery from client scope negotiation and sponsor acquisition to cross-functional team execution under strict timelines.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Project Management</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Program Coordination</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Team Coordination</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Event Management</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Sponsorship Management</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Client Negotiation</span>
+            </div>
+          </article>
+
+          <!-- Category 3: Content & Creative -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400 font-display font-bold text-sm">
+                  03
+                </span>
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                  Content &amp; Creative
+                </h3>
+              </div>
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-orange-300 bg-orange-500/10 border border-orange-500/20 px-2.5 py-1 rounded-full">
+                Production
+              </span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed mb-5">
+              Directing, editing, and producing high-retention commercial videos and modern AI-enhanced visual campaigns.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Video Production</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Video Editing</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">AI Video Creation</span>
+            </div>
+          </article>
+
+          <!-- Category 4: Interpersonal -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-300 font-display font-bold text-sm">
+                  04
+                </span>
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                  Interpersonal &amp; Leadership
+                </h3>
+              </div>
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full">
+                Communication
+              </span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed mb-5">
+              Proven stage presence, persuasive communication, and collaborative leadership across remote and on-campus teams.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Leadership</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Public Speaking</span>
+              <span class="glass-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100">Stakeholder Communication</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 2: PROFESSIONAL EXPERIENCE -->
+      <section id="experience" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            02 / Professional Experience
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Two+ Years of Hands-On Marketing, Media &amp; PR Leadership
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+            Verified roles spanning university club executive leadership, remote international creative direction, and client-facing agency project management.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Role 1 -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-8 border-l-4 border-l-orange-500">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-orange-400 mb-1">
+                  Youth Marketing Club, IIUC
+                </div>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                  Public Relations Secretary
+                </h3>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-orange-200">
+                  August 2026 &ndash; Present
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-zinc-300">
+                  Chattogram, Bangladesh
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-300">
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Manage communications and external relations for the club&rsquo;s marketing initiatives and events.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Led PR, marketing, online promotion, and sponsor management for <strong class="text-white font-semibold">Idea Thrive Bangladesh 2026</strong>.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Coordinate cross-functional teams to plan and execute marketing and outreach activities.</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Role 2 -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-8 border-l-4 border-l-amber-400">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-amber-300 mb-1">
+                  USANA Health Sciences India
+                </div>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                  Marketing Coordinator
+                </h3>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-amber-200">
+                  June 2025 &ndash; February 2026
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-zinc-300">
+                  India (Remote)
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-300">
+              <li class="flex items-start gap-2.5">
+                <span class="text-amber-400 font-bold mt-0.5">&bull;</span>
+                <span>Directed and edited creative content as the campaign&rsquo;s <strong class="text-white font-semibold">first remote director and creative editor</strong>.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-amber-400 font-bold mt-0.5">&bull;</span>
+                <span>Managed a fully remote, cross-border team, strengthening leadership and project management capabilities.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-amber-400 font-bold mt-0.5">&bull;</span>
+                <span>Combined strategic marketing planning with hands-on creative execution to deliver campaign objectives.</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Role 3 -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-8 border-l-4 border-l-orange-600">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-orange-400 mb-1">
+                  Sytrus Media
+                </div>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                  Project Manager
+                </h3>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-orange-200">
+                  August 2024 &ndash; October 2025
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-medium text-zinc-300">
+                  Bangladesh
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-300">
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Managed end-to-end project delivery while serving as <strong class="text-white font-semibold">Creative Lead</strong>, overseeing planning, execution, and quality control.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Negotiated directly with clients to define project scope, timelines, and deliverables.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-orange-400 font-bold mt-0.5">&bull;</span>
+                <span>Directed and motivated the project team, improving communication and collaboration.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 3: EDUCATION & CERTIFICATIONS -->
+      <section id="education" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            03 / Education &amp; Certifications
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Academic Credentials &amp; Industry Certifications
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Education Column (7 cols) -->
+          <div class="lg:col-span-7 space-y-5">
+            <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-orange-400">
+                  Undergraduate Degree &bull; 2023 &ndash; Present
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-bold text-orange-200">
+                  CGPA: 3.31 / 4.00
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">
+                Bachelor of Business Administration (BBA), Major in Marketing
+              </h3>
+              <p class="text-sm text-zinc-300 mt-1.5">
+                International Islamic University Chittagong (IIUC)
+              </p>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+                Combining core marketing theory, consumer behavior, brand management, and strategic promotion with active leadership in campus business and marketing organizations.
+              </p>
+            </article>
+
+            <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-amber-300">
+                  Higher Secondary Education
+                </span>
+                <span class="glass-pill px-3 py-1 rounded-full text-xs font-bold text-amber-200">
+                  GPA: 4.92 / 5.00
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">
+                Higher Secondary School Certificate (HSC)
+              </h3>
+              <p class="text-sm text-zinc-300 mt-1.5">
+                Ispahani Public School and College, Chittagong
+              </p>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+                Strong academic foundation built through disciplined performance and structured communication training.
+              </p>
+            </article>
+          </div>
+
+          <!-- Certifications Column (5 cols) -->
+          <div class="lg:col-span-5">
+            <article class="reveal-card liquid-glass rounded-2xl p-6 sm:p-7 h-full flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">
+                  Verified Skill Credentials
+                </span>
+                <h3 class="font-display font-bold text-xl text-white mb-5">
+                  Professional Certifications
+                </h3>
+
+                <ul class="space-y-3.5">
+                  <li class="rounded-xl bg-black/40 border border-orange-500/20 p-3.5">
+                    <div class="font-semibold text-sm text-white">HubSpot Inbound Marketing Certification</div>
+                    <div class="text-xs text-orange-300/90 mt-0.5">HubSpot Academy</div>
+                  </li>
+                  <li class="rounded-xl bg-black/40 border border-orange-500/20 p-3.5">
+                    <div class="font-semibold text-sm text-white">Online Marketing Certified Professional (OMCP)</div>
+                    <div class="text-xs text-orange-300/90 mt-0.5">OMCP Credential</div>
+                  </li>
+                  <li class="rounded-xl bg-black/40 border border-orange-500/20 p-3.5">
+                    <div class="font-semibold text-sm text-white">Google Ads Video Certification</div>
+                    <div class="text-xs text-orange-300/90 mt-0.5">Google</div>
+                  </li>
+                  <li class="rounded-xl bg-black/40 border border-orange-500/20 p-3.5">
+                    <div class="font-semibold text-sm text-white">Digital Marketing Channels Planning</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">Channel &amp; Campaign Strategy</div>
+                  </li>
+                  <li class="rounded-xl bg-black/40 border border-orange-500/20 p-3.5">
+                    <div class="font-semibold text-sm text-white">Video Making</div>
+                    <div class="text-xs text-orange-300/90 mt-0.5">10 Minute School</div>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGMENT 4: HONORS, AWARDS, EXTRA-CURRICULAR & VOLUNTEERING -->
+      <section id="achievements" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            04 / Honors, Leadership &amp; Community Impact
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Awards, Flagship Organizing &amp; Volunteering
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Honors & Awards -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 border-t-2 border-t-orange-500">
+            <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">
+              Competitive Recognition
+            </span>
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Honors &amp; Awards
+            </h3>
+            <ul class="space-y-3.5 text-sm text-zinc-200">
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">2-Time Champion</div>
+                <div class="text-xs text-orange-300 mt-0.5">Inter University Public Speaking Championship</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">2nd Runners Up</div>
+                <div class="text-xs text-amber-300 mt-0.5">Inter University OVC Making Competition</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">4th Position</div>
+                <div class="text-xs text-zinc-300 mt-0.5">Chittagong Unlocked AI Video Making Competition (organized by Peninsula Chittagong)</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Semi-Finalist</div>
+                <div class="text-xs text-zinc-300 mt-0.5">Inter University Debate Competition 2024</div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Extra-Curricular Activities -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 border-t-2 border-t-amber-400">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-300 block mb-2">
+              Campus Leadership
+            </span>
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Extra-Curricular Activities
+            </h3>
+
+            <div class="rounded-xl bg-gradient-to-br from-orange-500/12 to-black/50 border border-orange-500/25 p-4 mb-4">
+              <div class="font-display font-bold text-base text-white">
+                Idea Thrive Bangladesh 2026
+              </div>
+              <div class="text-xs text-orange-300 font-medium mt-0.5">
+                Organized by Youth Marketing Club
+              </div>
+              <ul class="mt-3 space-y-1.5 text-xs sm:text-sm text-zinc-300">
+                <li>&bull; Head of PR and Marketing</li>
+                <li>&bull; Head of Online Promotion</li>
+                <li>&bull; Organizer; managed event sponsors and sponsor relations</li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl bg-white/[0.03] border border-white/10 p-4">
+              <div class="font-semibold text-sm text-white">
+                IIUC Business Fair 2025
+              </div>
+              <div class="text-xs text-zinc-400 mt-1">
+                Active team member supporting event coordination and campus engagement.
+              </div>
+            </div>
+          </article>
+
+          <!-- Volunteering Activities -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 border-t-2 border-t-orange-600">
+            <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">
+              Service &amp; Event Operations
+            </span>
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Volunteering Activities
+            </h3>
+            <ul class="space-y-3 text-sm text-zinc-200">
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Volunteer Coordinator</div>
+                <div class="text-xs text-orange-300 mt-0.5">Project Chona-Piyaju &mdash; Youth&rsquo;s Voice</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Volunteer</div>
+                <div class="text-xs text-zinc-300 mt-0.5">IIUC Business Fair</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Volunteer</div>
+                <div class="text-xs text-zinc-300 mt-0.5">IIUC Business Brainstorm</div>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Volunteer</div>
+                <div class="text-xs text-zinc-300 mt-0.5">Future Business Leadership Seminar</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 5: VISUAL PROOF / MOMENTS & ACHIEVEMENTS GALLERY -->
+      <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            05 / Visual Proof &amp; Milestones
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Evidence in Action: Leadership, Competitions &amp; Industry Meetings
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+            Photographic documentation, live LinkedIn video proof, and official competition highlights verifying campus leadership, public speaking wins, and industry networking. Click any photo card to inspect in full view.
+          </p>
+        </div>
+
+        <!-- Balanced 6-Item Responsive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+
+          <!-- Photo 1: Public Relations Secretary | Youth Marketing Club, IIUC -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <button
+              type="button"
+              data-lightbox-src="https://media.licdn.com/dms/image/v2/D4E22AQF2cpiADO-f5A/feedshare-shrink_800/B4EaA6HH2SHkAc-/0/1787681341226?e=1797465600&v=beta&t=g8_CRehfI5dGSxWenRSl0BxnP5ES5OstIbhbAEuxe9E"
+              data-lightbox-title="Public Relations Secretary | Youth Marketing Club, IIUC"
+              data-lightbox-caption="Leading external communications, event branding, and outreach initiatives at Youth Marketing Club, IIUC."
+              class="gallery-media-frame group text-left focus:outline-none"
+            >
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E22AQF2cpiADO-f5A/feedshare-shrink_800/B4EaA6HH2SHkAc-/0/1787681341226?e=1797465600&v=beta&t=g8_CRehfI5dGSxWenRSl0BxnP5ES5OstIbhbAEuxe9E"
+                alt="Public Relations Secretary — Youth Marketing Club, IIUC"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=PR+Secretary+%7C+Youth+Marketing+Club';"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+                Leadership
+              </span>
+            </button>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  Public Relations Secretary | Youth Marketing Club, IIUC
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Managing PR, promotional strategy, and stakeholder outreach for flagship university marketing programs.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Photo 2: IIUC Business Fair -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <button
+              type="button"
+              data-lightbox-src="https://media.licdn.com/dms/image/v2/D4E2DAQHO6Xm1_314mw/profile-treasury-image-shrink_800_800/B4EaA5xWQnIIAI-/0/1787675633240?e=1796302800&v=beta&t=kAVKutuoW_tFW3n4CkjO38fMdXQeqcikzzReCNf_GcE"
+              data-lightbox-title="IIUC Business Fair"
+              data-lightbox-caption="Active organizing and team execution during IIUC Business Fair."
+              class="gallery-media-frame group text-left focus:outline-none"
+            >
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E2DAQHO6Xm1_314mw/profile-treasury-image-shrink_800_800/B4EaA5xWQnIIAI-/0/1787675633240?e=1796302800&v=beta&t=kAVKutuoW_tFW3n4CkjO38fMdXQeqcikzzReCNf_GcE"
+                alt="IIUC Business Fair"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=IIUC+Business+Fair';"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-200">
+                Campus Activation
+              </span>
+            </button>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  IIUC Business Fair
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  On-ground coordination, student entrepreneurship showcase, and collaborative event operations at IIUC.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Photo 3: Public Speaking Champion of IIUC -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <button
+              type="button"
+              data-lightbox-src="https://media.licdn.com/dms/image/v2/D4E22AQFDBQoT-_5JbA/feedshare-shrink_800/B4EaBqzceyJ0Ac-/0/1788498266369?e=1797465600&v=beta&t=VpvorGuFe8N12RtPAHcBQ4dDxg_7Zk4EVXAwHh-Kkz4"
+              data-lightbox-title="Public Speaking Champion of IIUC"
+              data-lightbox-caption="Two-time Inter-University Public Speaking Champion recognition."
+              class="gallery-media-frame group text-left focus:outline-none"
+            >
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E22AQFDBQoT-_5JbA/feedshare-shrink_800/B4EaBqzceyJ0Ac-/0/1788498266369?e=1797465600&v=beta&t=VpvorGuFe8N12RtPAHcBQ4dDxg_7Zk4EVXAwHh-Kkz4"
+                alt="Public speaking champion of IIUC"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=Public+Speaking+Champion+IIUC';"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+                2x Champion
+              </span>
+            </button>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  Public Speaking Champion of IIUC
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Awarded championship honors twice in inter-university public speaking competitions.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Photo 4: Meeting with the CEO and Founder of Next Wave -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <button
+              type="button"
+              data-lightbox-src="https://media.licdn.com/dms/image/v2/D5622AQHMibv_0xMoBg/feedshare-shrink_480/B56aCl4qkAHIAg-/0/1789489490650?e=1797465600&v=beta&t=7LXZe8ZAaE3r5OOHEH2OMogAWVrtbJwzgNgPyXGWTWg"
+              data-lightbox-title="Meeting with the CEO and Founder of Next Wave"
+              data-lightbox-caption="Strategic discussion with Abdullah AL Kaisar, Founder and CEO of Next Wave."
+              class="gallery-media-frame group text-left focus:outline-none"
+            >
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5622AQHMibv_0xMoBg/feedshare-shrink_480/B56aCl4qkAHIAg-/0/1789489490650?e=1797465600&v=beta&t=7LXZe8ZAaE3r5OOHEH2OMogAWVrtbJwzgNgPyXGWTWg"
+                alt="Meeting with the CEO and Founder of Next Wave"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x500/141210/ff9100?text=Meeting+with+CEO+of+Next+Wave';"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-3 left-3 glass-pill px-2.5 py-1 rounded-full text-[11px] font-semibold text-orange-200">
+                Industry Network
+              </span>
+            </button>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  Meeting with the CEO and Founder of Next Wave
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Connecting with Abdullah AL Kaisar (Founder &amp; CEO, Next Wave) on growth, media execution, and entrepreneurial strategy.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 5: 2nd Runners Up Inter University OVC Making Competition (Facebook Post Feature Card) -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <div class="gallery-media-frame flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1f130a] via-[#121010] to-[#08080a] border-b border-orange-500/20">
+              <div class="w-12 h-12 rounded-2xl btn-orange-gradient flex items-center justify-center text-white mb-2.5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span class="glass-pill px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-orange-300">
+                Award Highlight &bull; 2nd Runners Up
+              </span>
+              <p class="mt-2 font-display font-bold text-sm sm:text-base text-white max-w-xs">
+                Inter University OVC Making Competition
+              </p>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  2nd Runners Up &mdash; Inter University OVC Making Competition
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Recognized for Online Video Commercial (OVC) concept, scripting, and post-production craft.
+                </p>
+              </div>
+              <div>
+                <a
+                  href="https://www.facebook.com/share/1JUmTYtbpE/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-orange-gradient inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white"
+                >
+                  <span>View Post</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7m0-7L10 14M5 5H3v16h16v-2" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 6: Live Embedded LinkedIn Video Showcase -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col lg:col-span-2">
+            <div class="relative w-full aspect-[504/399] bg-black overflow-hidden border-b border-orange-500/20">
+              <iframe
+                src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7503135000700227584?compact=1"
+                height="399"
+                width="504"
+                frameborder="0"
+                allowfullscreen=""
+                loading="lazy"
+                title="Embedded LinkedIn Video Post — Sajid Mahmud"
+                class="w-full h-full border-0"
+              ></iframe>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="glass-pill px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-orange-300">
+                    Live LinkedIn Video
+                  </span>
+                  <a
+                    href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7503135000700227584"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs font-medium text-orange-300 hover:text-orange-200 transition"
+                  >
+                    Open on LinkedIn &nearr;
+                  </a>
+                </div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  Featured LinkedIn Video Showcase
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Play directly on this page to view verified video presentation, speaking, and creative production highlights from LinkedIn.
+                </p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- SEGMENT 6: REFERENCES & ENDORSEMENTS (With Provided Photos) -->
+      <section id="references" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card mb-8 sm:mb-10">
+          <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+            06 / Academic &amp; Industry References
+          </span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Verified Mentors, Faculty &amp; Industry Referees
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+            Direct academic and executive references listed on Sajid Mahmud&rsquo;s CV for recruiter verification.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Reference 1: Dr. Mohammad Toufiqur Rahman -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center justify-between">
+            <div class="flex flex-col items-center">
+              <div class="avatar-ring rounded-full mb-4">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D5603AQER9ygNiFAynA/profile-displayphoto-crop_800_800/B56Z_f386SGUAI-/0/1786167415568?e=1797465600&v=beta&t=ceEWlNgqYKFJ_xCZaBFupVs5NcwyulKqf-MK-7amuww"
+                  alt="Dr. Mohammad Toufiqur Rahman"
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/141210/ff9100?text=DR';"
+                  class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-top bg-zinc-900"
+                />
+              </div>
+
+              <span class="glass-pill px-3 py-1 rounded-full text-[11px] font-semibold text-orange-300 mb-2">
+                Academic &amp; Club Mentor
+              </span>
+
+              <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                Dr. Mohammad Toufiqur Rahman
+              </h3>
+
+              <p class="mt-2 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                President, Youth Marketing Club, IIUC
+                <span class="block text-zinc-400 mt-1">
+                  Associate Professor in Marketing, Department of Business Administration, IIUC
+                </span>
+              </p>
+            </div>
+
+            <div class="w-full mt-6 pt-4 border-t border-orange-500/20">
+              <a
+                href="tel:+8801611900667"
+                class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-orange-300 hover:text-orange-200 transition"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>+8801611900667</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Reference 2: Abdullah Md. Ahshanul Mamun -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center justify-between">
+            <div class="flex flex-col items-center">
+              <div class="avatar-ring rounded-full mb-4">
+                <img
+                  src="https://portal.iiuc.ac.bd/assets/teacher/2289.jpeg"
+                  alt="Abdullah Md. Ahshanul Mamun"
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/141210/ff9100?text=AM';"
+                  class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-top bg-zinc-900"
+                />
+              </div>
+
+              <span class="glass-pill px-3 py-1 rounded-full text-[11px] font-semibold text-amber-300 mb-2">
+                Academic &amp; Business Club Mentor
+              </span>
+
+              <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                Abdullah Md. Ahshanul Mamun
+              </h3>
+
+              <p class="mt-2 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                President, IIUC Business Club, IIUC
+                <span class="block text-zinc-400 mt-1">
+                  Associate Professor, Department of Business Administration, IIUC
+                </span>
+              </p>
+            </div>
+
+            <div class="w-full mt-6 pt-4 border-t border-orange-500/20">
+              <a
+                href="tel:+8801816901671"
+                class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-orange-300 hover:text-orange-200 transition"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>+8801816901671</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Reference 3: Abdullah AL Kaisar -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center justify-between">
+            <div class="flex flex-col items-center">
+              <div class="avatar-ring rounded-full mb-4">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D5603AQGVDA0ggGWatQ/profile-displayphoto-crop_800_800/B56aExk9pTG0AI-/0/1791833136820?e=1797465600&v=beta&t=JMfxOkKcEAbYvq93lS2MDEfxm9H_T527wN_7Wwsj6nc"
+                  alt="Abdullah AL Kaisar"
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/141210/ff9100?text=AK';"
+                  class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-top bg-zinc-900"
+                />
+              </div>
+
+              <span class="glass-pill px-3 py-1 rounded-full text-[11px] font-semibold text-orange-300 mb-2">
+                Industry Executive Reference
+              </span>
+
+              <h3 class="font-display font-bold text-lg sm:text-xl text-white">
+                Abdullah AL Kaisar
+              </h3>
+
+              <p class="mt-2 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                Founder and CEO, Next Wave
+                <span class="block text-zinc-400 mt-1">
+                  Industry Leadership &amp; Strategic Growth Reference
+                </span>
+              </p>
+            </div>
+
+            <div class="w-full mt-6 pt-4 border-t border-orange-500/20">
+              <a
+                href="tel:+8801711204614"
+                class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-orange-300 hover:text-orange-200 transition"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>+8801711204614</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer with Direct LinkedIn & Contact Links -->
+    <footer class="border-t border-orange-500/20 bg-[#050507]/90 backdrop-blur-xl mt-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <div class="font-display font-bold text-lg text-white">Sajid Mahmud</div>
+          <div class="text-xs sm:text-sm text-zinc-400 mt-1">
+            Marketing &amp; Project Coordination Professional &bull; Chattogram, Bangladesh
+          </div>
+          <div class="mt-2 flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-1 text-xs text-zinc-300">
+            <a href="mailto:sajidmahmud2307@gmail.com" class="hover:text-orange-300 transition">sajidmahmud2307@gmail.com</a>
+            <span>&bull;</span>
+            <a href="tel:+8801879757459" class="hover:text-orange-300 transition">+8801879757459</a>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/sajid-mahmud-72a132431/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-orange-gradient inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold text-white"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
+            </svg>
+            <span>Connect on LinkedIn</span>
+          </a>
+
+          <a
+            href="#top"
+            class="glass-pill px-4 py-3 rounded-xl text-xs sm:text-sm font-medium text-zinc-200 hover:text-orange-300 transition"
+          >
+            Back to Top
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox Modal for Gallery Photos -->
+  <div
+    id="photo-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-xl p-4"
+  >
+    <div class="liquid-glass rounded-3xl max-w-3xl w-full overflow-hidden border border-orange-500/30">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-white/10">
+        <h3 id="lightbox-title" class="font-display font-bold text-sm sm:text-base text-white truncate pr-4">
+          Milestone Preview
+        </h3>
+        <button
+          id="lightbox-close"
+          type="button"
+          aria-label="Close image preview"
+          class="p-2 rounded-xl glass-pill text-zinc-200 hover:text-orange-300 transition"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="bg-black flex items-center justify-center max-h-[70vh] overflow-hidden">
+        <img id="lightbox-img" src="" alt="" class="max-h-[70vh] w-auto object-contain" />
+      </div>
+      <div class="px-5 py-4 text-xs sm:text-sm text-zinc-300">
+        <p id="lightbox-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript: Moving White Particles, Mobile Drawer, Lightbox & Scroll Reveals -->
+  <script>
+    (function () {
+      // 1. Mobile Navigation Drawer
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileDrawer = document.getElementById('mobile-nav-drawer');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function setDrawerState(isOpen) {
+        if (!mobileDrawer || !menuBtn) return;
+        mobileDrawer.classList.toggle('hidden', !isOpen);
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        if (iconOpen) iconOpen.classList.toggle('hidden', isOpen);
+        if (iconClose) iconClose.classList.toggle('hidden', !isOpen);
+      }
+
+      if (menuBtn) {
+        menuBtn.addEventListener('click', function () {
+          const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          setDrawerState(!expanded);
+        });
+      }
+
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          setDrawerState(false);
+        });
+      });
+
+      // 2. Gallery Lightbox
+      const lightbox = document.getElementById('photo-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const triggers = document.querySelectorAll('[data-lightbox-src]');
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+
+      triggers.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (!lightbox || !lightboxImg) return;
+          const src = btn.getAttribute('data-lightbox-src') || '';
+          const title = btn.getAttribute('data-lightbox-title') || '';
+          const caption = btn.getAttribute('data-lightbox-caption') || '';
+          lightboxImg.src = src;
+          lightboxImg.alt = title;
+          if (lightboxTitle) lightboxTitle.textContent = title;
+          if (lightboxCaption) lightboxCaption.textContent = caption;
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+        });
+      });
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+      }
+      if (lightbox) {
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+
+      // 3. Scroll Reveal Observer
+      const revealEls = document.querySelectorAll('.reveal-card');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        revealEls.forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      } else {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+        );
+
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // 4. Moving White Particles Canvas
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = 0;
+      let height = 0;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let particles = [];
+      let animationFrameId = null;
+
+      function getTargetCount() {
+        const area = window.innerWidth * window.innerHeight;
+        if (window.innerWidth < 640) return 40;
+        if (window.innerWidth < 1024) return 65;
+        return Math.min(95, Math.max(58, Math.floor(area / 17500)));
+      }
+
+      function createParticle() {
+        const radius = 0.8 + Math.random() * 2.1;
+        const speedBase = 0.15 + Math.random() * 0.34;
+        const angle = Math.random() * Math.PI * 2;
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: Math.cos(angle) * speedBase,
+          vy: Math.sin(angle) * speedBase - 0.08,
+          r: radius,
+          alpha: 0.18 + Math.random() * 0.52,
+          twinklePhase: Math.random() * Math.PI * 2,
+          twinkleSpeed: 0.008 + Math.random() * 0.015,
+        };
+      }
+
+      function resizeCanvas() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const desired = getTargetCount();
+        if (particles.length === 0) {
+          particles = Array.from({ length: desired }, createParticle);
+        } else if (particles.length > desired) {
+          particles.length = desired;
+        } else {
+          while (particles.length < desired) {
+            particles.push(createParticle());
+          }
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.twinklePhase += p.twinkleSpeed;
+
+          if (p.x < -12) p.x = width + 12;
+          if (p.x > width + 12) p.x = -12;
+          if (p.y < -12) p.y = height + 12;
+          if (p.y > height + 12) p.y = -12;
+
+          const currentAlpha = Math.max(
+            0.1,
+            Math.min(0.8, p.alpha + Math.sin(p.twinklePhase) * 0.14)
+          );
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, ' + currentAlpha.toFixed(3) + ')';
+          ctx.fill();
+        }
+      }
+
+      function loop() {
+        drawParticles();
+        animationFrameId = window.requestAnimationFrame(loop);
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      if (prefersReducedMotion) {
+        drawParticles();
+      } else {
+        loop();
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden && animationFrameId) {
+            window.cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          } else if (!document.hidden && !animationFrameId) {
+            loop();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
