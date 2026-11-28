@@ -230,13 +230,16 @@
     <!-- Sticky Liquid-Glass Navigation Header -->
     <header class="sticky top-0 z-40 border-b border-orange-500/15 bg-[#060608]/80 backdrop-blur-xl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-3">
-        <!-- Brand -->
-        <a href="#top" class="flex items-center gap-3 group min-w-0">
-          <span class="w-9 h-9 rounded-xl btn-orange-gradient flex items-center justify-center font-display font-extrabold text-sm text-white shrink-0">
-            SM
-          </span>
+        <!-- Brand Home Button with Profile Picture -->
+        <a href="#top" aria-label="Sajid Mahmud — Back to Top" class="flex items-center gap-3 group min-w-0">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQEd172b0vmHEQ/profile-displayphoto-crop_800_800/B56ZnDycEkKAAI-/0/1759926404110?e=1797465600&v=beta&t=flyZPk1xZcYiIpY7MBdyn5KuzQ3Bbgq-dhcQ6_wjlvY"
+            alt="Sajid Mahmud"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x100/141210/ff9100?text=SM';"
+            class="w-10 h-10 rounded-full object-cover object-top ring-2 ring-orange-500/80 shadow-glowOrange group-hover:scale-105 group-hover:ring-amber-400 transition duration-200 shrink-0 bg-zinc-900"
+          />
           <div class="truncate">
-            <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white block leading-none">
+            <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-orange-300 transition block leading-none">
               Sajid Mahmud
             </span>
             <span class="text-[11px] text-orange-300/80 hidden sm:block mt-1">
@@ -312,7 +315,7 @@
             <div class="lg:col-span-4 flex flex-col items-center text-center">
               <div class="avatar-ring rounded-full mb-5">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D5603AQEd172b0vmHEQ/profile-displayphoto-crop_800_800/B56ZnDycEkKAAI-/0/1759926404110?e=1796860800&v=beta&t=_NdtQVLZ2qL8dQ7-wXxCRuBG9xvsPbv0YegBS3iYuNM"
+                  src="https://media.licdn.com/dms/image/v2/D5603AQEd172b0vmHEQ/profile-displayphoto-crop_800_800/B56ZnDycEkKAAI-/0/1759926404110?e=1797465600&v=beta&t=flyZPk1xZcYiIpY7MBdyn5KuzQ3Bbgq-dhcQ6_wjlvY"
                   alt="Sajid Mahmud — Marketing & Project Coordination Professional"
                   onerror="this.onerror=null; this.src='https://placehold.co/400x400/141210/ff9100?text=SM';"
                   class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover object-top bg-zinc-900"
@@ -866,6 +869,40 @@
             <h3 class="font-display font-bold text-xl text-white mb-4">
               Volunteering Activities
             </h3>
+            <ul class="space-y-3.5 text-sm text-zinc-200">
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Event &amp; Outreach Volunteer</div>
+                <div class="text-xs text-orange-300 mt-0.5">Youth Marketing Club &amp; IIUC Flagship Programs</div>
+                <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+                  Supported logistics, guest reception, sponsor hospitality, and live stage coordination across inter-university competitions.
+                </p>
+              </li>
+              <li class="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                <div class="font-semibold text-white">Campus Media &amp; Community Support</div>
+                <div class="text-xs text-amber-300 mt-0.5">Student Engagement &amp; Awareness Drives</div>
+                <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+                  Assisted student orientation, workshop promotion, and collaborative community initiatives in Chattogram.
+                </p>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 5: VISUAL PROOF & MOMENTS GALLERY -->
+      <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-20">
+        <div class="reveal-card flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div>
+            <span class="glass-pill inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-300 mb-3">
+              05 / Visual Proof &amp; Moments
+            </span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+              Verified Visual Proof, Media Features &amp; Leadership Moments
+            </h2>
+            <p class="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
+              Live television features, embedded LinkedIn video showcases, championship awards, and executive leadership milestones.
+            </p>
+          </div>
           <span class="glass-pill self-start md:self-auto px-3.5 py-1.5 rounded-full text-xs font-medium text-orange-200">
             Orientation-Adaptive Framing &bull; Click to Zoom
           </span>
@@ -873,6 +910,45 @@
 
         <!-- Balanced 3-Column Responsive Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Video Card 1: Featuring on Jamuna TV (Autoplaying Live YouTube Embed) -->
+          <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col">
+            <div class="gallery-media-frame bg-black border-b border-orange-500/20">
+              <iframe
+                src="https://www.youtube.com/embed/zxRVc1WvGsQ?si=c8x0Jesebgenb5kQ&autoplay=1&mute=1&loop=1&playlist=zxRVc1WvGsQ&controls=0&start=1&playsinline=1&rel=0"
+                title="Featuring on Jamuna TV — Sajid Mahmud"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                class="w-full h-full border-0"
+              ></iframe>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="glass-pill px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-orange-300 inline-flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                    Live YouTube Video
+                  </span>
+                  <a
+                    href="https://www.youtube.com/watch?v=zxRVc1WvGsQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs font-medium text-orange-300 hover:text-orange-200 transition"
+                  >
+                    Watch on YouTube &nearr;
+                  </a>
+                </div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">
+                  Featuring on Jamuna TV
+                </h3>
+                <p class="mt-1.5 text-xs sm:text-sm text-zinc-400">
+                  Television media appearance featured on Jamuna TV, highlighting youth marketing leadership and creative initiatives.
+                </p>
+              </div>
+            </div>
+          </article>
 
           <!-- Photo 1: EF Hult Prize at IIUC 2026–2027 -->
           <article class="reveal-card liquid-glass liquid-glass-interactive rounded-2xl overflow-hidden flex flex-col">
